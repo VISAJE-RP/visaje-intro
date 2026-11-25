@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex">
+<title>VISAJE RP - intro</title>
+<style>
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0b0b0a; }
+  iframe { width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+<body>
+<!-- Reproductor oficial de YouTube: esta pagina no aloja ni copia el video -->
+<iframe id="yt" title="Intro de VISAJE RP" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"
+  src="https://www.youtube.com/embed/7hppTWiiFeg?autoplay=1&controls=0&rel=0&loop=1&playlist=7hppTWiiFeg&enablejsapi=1&playsinline=1"></iframe>
+<script>
+  // La pantalla de carga solo puede pedir silenciar o activar el sonido
+  window.addEventListener('message', (e) => {
+    if (e.data !== 'mute' && e.data !== 'unMute') return;
+    document.getElementById('yt').contentWindow.postMessage(JSON.stringify({ event: 'command', func: e.data, args: [] }), 'https://www.youtube.com');
+  });
+</script>
+</body>
+</html>
